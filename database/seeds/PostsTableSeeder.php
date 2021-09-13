@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Str;
+use Illuminate\Support\Str;
 use App\Post;
 
 class PostsTableSeeder extends Seeder
@@ -13,7 +13,7 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-        for($i = 0; $i , 20; $i++){
+        for($i = 0; $i < 20; $i++){
             //creare l'istanza
             $newPost = new Post();
 

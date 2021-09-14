@@ -93,7 +93,10 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $data = $request->all();
-        $data['slug'] = Str::slug($data['title'], '-');
+        //? se lo slug é diverso dal precedente ricalcolalo
+        if($data['title'] != $post->title){
+            $data['slug'] = Str::slug($data['title'], '-');
+        }
         $post->update($data);
 
         return redirect()->route('admin.posts.index')->with('updated', 'Hai modificato con successo l\'elemento ' . $post->id);

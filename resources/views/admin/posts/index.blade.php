@@ -2,6 +2,16 @@
 
 @section('content')
   <div class="container">
+    <div class="container">
+
+      {{-- messaggio se il post é stato modificato --}}
+      @if(session('updated'))
+      <div class="alert alert-success">
+        {{session('updated')}}
+      </div>
+      @endif
+
+    </div>
     <table class="table">
       <thead>
         <tr>

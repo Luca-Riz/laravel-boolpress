@@ -4,8 +4,9 @@
   <div class="container">
 
     <div class="container">
-      <form>
+      <form action="{{route('admin.posts.update', $post->id)}}" method="post"> {{-- method non é indispensabile --}}
         @csrf
+        @method('PATCH')
         <div class="mb-3">
           <label for="titolo" class="form-label">Titolo</label>
           <input type="text" class="form-control" id="titolo" name='title' value="{{$post->title}}">

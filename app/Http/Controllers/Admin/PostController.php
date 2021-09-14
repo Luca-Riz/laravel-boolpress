@@ -58,10 +58,19 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+
+    //collegamento con slug (utilizzato nel front office)
+    public function show($slug)
     {
+        $post = Post::where('slug',$slug)->first();
         return view('admin.posts.show', compact('post'));
     }
+
+    //collegamento con id
+    // public function show(Post $post)
+    // {
+    //     return view('admin.posts.show', compact('post'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -69,9 +78,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        return view('admin.posts.edit');
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**

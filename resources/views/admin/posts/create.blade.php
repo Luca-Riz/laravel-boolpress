@@ -3,6 +3,8 @@
 @section('content')
 
   <div class="container">
+
+    {{-- visualizzare tutti gli errori in alto --}}
     @if($errors->any())
       <div class="alert alert-danger">
         {{-- @dd($errors)   --}}

@@ -43,7 +43,25 @@ class PostController extends Controller
 
         // creare nuova istanza coi dati ottenuti dalla request
         $new_post = new Post();
-        $new_post->slug = Str::slug($data['title'], '-');
+
+        $slug = Str::slug($data['title'], '-');
+
+        // se c'é un duplicato
+        $slug_base = $slug;
+
+        $slug_presente = Post::where('slug', $slug)->first();
+
+        $contatore = 1;
+        while ($slug_presente) {
+            $slug = $slug_base . '-' . $contatore;
+
+            $slug_presente = Post::where('slug', $slug)->first();
+
+            $contatore++;
+        }
+        // end se c'é un duplicato
+
+        $new_post->slug = $slug;
         $new_post->fill($data);
 
         // salvare
